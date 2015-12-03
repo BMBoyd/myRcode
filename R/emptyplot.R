@@ -1,5 +1,6 @@
 #'  Create a Blank Plot
 #'
+#' @export emptyplot
 emptyplot <- function(){
   old.par <- par("mar")
   on.exit(par("mar" = old.par))

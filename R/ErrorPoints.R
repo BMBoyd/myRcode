@@ -7,6 +7,7 @@
 #' @param show.hor logical; if TRUE, function draws horizontal segments
 #' @param show.ver logical; if TRUE, function draws vertical segments
 #' @param ... further arguments passed to segments
+#' @export ErrorPoints
 ErrorPoints<- function(x = NA, x.unc = NA, y = NA, y.unc = NA ,show.hor = T, show.ver = T, ...){
   if( show.hor){
     segments(x - x.unc, y , x + x.unc, y, ...)

@@ -21,7 +21,4 @@ lmequation(side = 1, line = NULL, model = NULL, log = NA,
 \description{
 Print a linear model equation on plot
 }
-\seealso{
-\code{\link[graphics:mtext]}
-}
 

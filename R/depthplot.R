@@ -1,6 +1,6 @@
 #' Plot a depth profile
 #'
-#'
+#' @export depthplot
 depthplot <- function(x, y, ylim=NULL, xlabel=NULL, ...){
   # par(mar=c(0.5, par()$mar[2], par()$mar[3], 0.5)) # modiy margins for depth plot
   if(!is.null(ylim)){
