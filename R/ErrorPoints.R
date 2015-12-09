@@ -13,9 +13,15 @@
 #' @param ... further arguments passed to segments
 #' @export ErrorPoints
 ErrorPoints<- function(x = NA, x.unc = NA, y = NA, y.unc = NA, show.hor = TRUE, show.ver = TRUE, xlog = FALSE, xlog.value = 0.01, na.rm = TRUE, ...){
-  if( na.rm){
-    y[is.na(x) | is.na(x.unc)] <- NA
-    x[is.na(y) | is.na(y.unc)] <- NA
+  # if( na.rm){
+  # y[is.na(x) | is.na(x.unc)] <- NA
+  # y[ is.na(x.unc)] <- NA
+  # x[is.na(y) | is.na(y.unc)] <- NA
+  # x[ is.na(y.unc)] <- NA
+  # }
+  if( show.hor & show.ver & na.rm){
+    x[ is.na(y.unc)] <- NA
+    y[ is.na(x.unc)] <- NA
   }
   if( show.hor){
     if( !xlog){

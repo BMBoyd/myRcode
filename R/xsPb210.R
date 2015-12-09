@@ -8,23 +8,29 @@
 #'
 #' @return Returns a two column vector of numerics with names xs210Pb and xs210Pb.uncer. NAs are placed where data is missing. If show.zero is true (default), then zeros are printed where xsPb210 is determined to be zero.
 xsPb210 <- function(PbAct = NA, PbActUnc = NA, SupPbAct = NA, SupPbActUnc = NA){
-  xs210Pb <- apply( c( PbAct, SupPbAct, PbActUnc), 1, function(x){
-    if(x[1]-x[2] >= 0 & !is.na(x[3])){
-      x[1]-x[2]
+  xs210Pb <- apply( cbind( PbAct, PbActUnc, SupPbAct, SupPbActUnc), 1, function(x){
+    ## no Pb
+    if( is.na(x[2])){
+      NA
+    ## no supported
+    } else if( is.na(x[4])){
+      x[1] # just Pb-210 activity
+    ## supported and total
+    } else if(sum(x[1],-x[3], na.rm = T) >= 0){
+      x[1]-x[3]
+    } else {
+      NA
+    }
+  }
+  )
+  xs210Pb.uncer <- apply( cbind( PbActUnc, SupPbActUnc, xs210Pb), 1, function(x) {
+    ## no excess Pb-210
+    if(!is.na(x[3])){
+      sum(x[1], x[2], na.rm = T)
     }else{
       NA
     }
   }
   )
-
-  xs210Pb.uncer <- apply( c( PbActUnc, SupPbActUnc, xs210Pb), 1, function(x) {
-    if(is.na(x[3])){
-      NA
-    }else{
-      x[1] + x[2]
-    }
-  }
-  )
-
-  data.frame( xs210Pb = xs210Pb, xs210.uncer = xs210Pb.uncer)
+  data.frame( xs210Pb = xs210Pb, xs210Pb.uncer = xs210Pb.uncer)
 }
