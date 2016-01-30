@@ -1,6 +1,6 @@
 #' Calculate Excess Pb-210
 #'
-#' @export
+#' @export xsPb210
 #' @param PbAct vector of total Pb-210 activity values
 #' @param PbActUnc vector of total Pb-210 activity error. Note: absolute not percent
 #' @param SupPbAct vector or single value to be used for supported Pb-210
@@ -12,10 +12,10 @@ xsPb210 <- function(PbAct = NA, PbActUnc = NA, SupPbAct = NA, SupPbActUnc = NA){
     ## no Pb
     if( is.na(x[2])){
       NA
-    ## no supported
+      ## no supported
     } else if( is.na(x[4])){
       x[1] # just Pb-210 activity
-    ## supported and total
+      ## supported and total
     } else if(sum(x[1],-x[3], na.rm = T) >= 0){
       x[1]-x[3]
     } else {
