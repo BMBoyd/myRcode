@@ -7,18 +7,15 @@
 #' @param ... Further graphical parameters (see par), including family, las and xpd. (The latter defaults to the figure region unless outer = TRUE, otherwise the device region. It can only be increased.)
 #' @export lmequation
 lmequation <-function(side=1 ,line=NULL,
-                       model=NULL, log = NA, col="black",adj=NA, at=NA, ...){
-  x <- summary(model.name)
+                       model=NULL, log = NA, ...){
+  x <- summary(model)
   if( is.na(log)){
-    mtext(side.eq, line.eq, col=col, adj=adj, at=at,
-          t=bquote(list(y == .(format(round(x$coefficients[2,1],2),nsmall=2))*x +
-                          .(format(round(x$coefficients[1,1],2),nsmall=2)),
-                        R^2== .(format(round(x$adj.r.squared,2),nsmall=2)))),...)
+    mtext(side, line, text = bquote(list(y == .(format(round(x$coefficients[2,1],2),nsmall=2))*x + .(format(round(x$coefficients[1,1],2),nsmall=2)),
+r^2== .(format(round(x$r.squared,2),nsmall=2)))),...)
   }
   if( !is.na(log) & log == "x"){
-    mtext(side.eq, line.eq, col=col, adj=adj, at=at,
-          t=bquote(list(y == .(format(round(x$coefficients[2,1],2),nsmall=2))*log[10](x) +
+    mtext(side, line, t=bquote(list(y == .(format(round(x$coefficients[2,1],2),nsmall=2))*log[10](x) +
                           .(format(round(x$coefficients[1,1],2),nsmall=2)),
-                        R^2== .(format(round(x$adj.r.squared,2),nsmall=2)))),...)
+                        r^2== .(format(round(x$r.squared,2),nsmall=2)))),...)
   }
 }
