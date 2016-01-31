@@ -4,7 +4,7 @@
 \alias{nakedplot}
 \title{Create a scatter plot with no axes or labels}
 \usage{
-nakedplot(x, y, ...)
+nakedplot(...)
 }
 \description{
 Create a scatter plot with no axes or labels

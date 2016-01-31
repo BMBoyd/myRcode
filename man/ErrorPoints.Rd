@@ -4,21 +4,28 @@
 \alias{ErrorPoints}
 \title{Plot Horizontal and Vertical Line Segments on Existing Plot}
 \usage{
-ErrorPoints(x = NA, x.unc = NA, y = NA, y.unc = NA, show.hor = T,
-  show.ver = T, ...)
+ErrorPoints(x = NULL, x.unc.lo = NA, y = NULL, y.unc.lo = NA,
+  x.unc.hi = NULL, y.unc.hi = NULL, xlog = FALSE, xlog.value = 0.01,
+  na.rm = TRUE, ...)
 }
 \arguments{
 \item{x}{a vector of x coordinates used as a centroid from which to draw segments.}
 
-\item{x.unc}{a vector of uncertainites added and subracted from x to create segments.}
+\item{x.unc.lo}{a vector of uncertainites added and subracted from x to create segments.}
 
 \item{y}{a vector of y coordinatesused as a centroid from which to draw segments.}
 
-\item{y.unc}{a vector of uncertainites added and subracted from y to create segments.}
+\item{y.unc.lo}{a vector of uncertainites added and subracted from y to create segments.}
 
-\item{show.hor}{logical; if TRUE, function draws horizontal segments}
+\item{x.unc.hi}{a vector of uncertainites added and subracted from x to create segments.}
 
-\item{show.ver}{logical; if TRUE, function draws vertical segments}
+\item{y.unc.hi}{a vector of uncertainites added and subracted from y to create segments.}
+
+\item{xlog}{logical; if TRUE changes nonpositive values to xlog.value}
+
+\item{xlog.value}{default 0.01}
+
+\item{na.rm}{logical; if TRUE, NA values in x and x.unc (y and y.unc) values result in no vertical (horizontal) line being drawn.}
 
 \item{...}{further arguments passed to segments}
 }
