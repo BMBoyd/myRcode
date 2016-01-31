@@ -1,0 +1,11 @@
+Package: mycode
+Type: Package
+Title: Brandon Michael Boyd's R Code
+Version: 0.1.0
+Date: 2015-12-02
+Author: B.M. Boyd [aut, cre]
+Maintainer: B.M. Boyd <boydb@udel.edu>
+Description: A variety of functions for plotting, gamma-ray analysis, and mapping.
+License: Proprietary
+LazyData: TRUE
+RoxygenNote: 5.0.1
