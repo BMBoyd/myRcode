@@ -3,3 +3,4 @@
 .RData
 mycode.Rproj
 .Rbuildignore
+.gitignore
