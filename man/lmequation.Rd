@@ -15,7 +15,7 @@ lmequation(side = 1, line = -1, model = NULL, inset = 0.05, at, ...)
 
 \item{inset}{fraction of axis length to inset equation. Values >= 0 inset from left; Values < 0 inset from right}
 
-\item{...}{Further graphical parameters (see par), including family, las and xpd. (The latter defaults to the figure region unless outer = TRUE, otherwise the device region. It can only be increased.)}
+\item{...}{Further graphical parameters (see par), including adj, family, las and xpd. (The latter defaults to the figure region unless outer = TRUE, otherwise the device region. It can only be increased.)}
 }
 \description{
 Print a linear model equation on plot
