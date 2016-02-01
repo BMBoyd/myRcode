@@ -4,18 +4,18 @@
 \alias{lmequation}
 \title{Print a linear model equation on plot}
 \usage{
-lmequation(side = 1, line = NULL, model = NULL, log = NA, ...)
+lmequation(side = 1, line = -1, model = NULL, inset = 0.05, at, ...)
 }
 \arguments{
 \item{side}{side to plot (1 = bottom, 2 = left, 3 = top, 4 = right).}
 
 \item{line}{on which MARgin line, starting at 0 counting outwards.}
 
+\item{model}{a linear model object}
+
+\item{inset}{fraction of axis length to inset equation. Values >= 0 inset from left; Values < 0 inset from right}
+
 \item{...}{Further graphical parameters (see par), including family, las and xpd. (The latter defaults to the figure region unless outer = TRUE, otherwise the device region. It can only be increased.)}
-
-\item{adj}{adjustment for each string in reading direction. For strings parallel to the axes, adj = 0 means left or bottom alignment, and adj = 1 means right or top alignment.}
-
-\item{at}{give location of each string in user coordinates. If the component of at corresponding to a particular text item is not a finite value (the default), the location will be determined by adj.}
 }
 \description{
 Print a linear model equation on plot
