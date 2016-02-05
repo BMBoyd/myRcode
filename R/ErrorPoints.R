@@ -6,13 +6,12 @@
 #' @param y a vector of y coordinatesused as a centroid from which to draw segments.
 #' @param y.unc.lo a vector of uncertainites added and subracted from y to create segments.
 #' @param y.unc.hi a vector of uncertainites added and subracted from y to create segments.
-#' @param xlog logical; if TRUE changes nonpositive values to xlog.value
 #' @param xlog.value default 0.01
 # make this a log = x y or xy in future
 #' @param na.rm logical; if TRUE, NA values in x and x.unc (y and y.unc) values result in no vertical (horizontal) line being drawn.
 #' @param ... further arguments passed to segments
 #' @export ErrorPoints
-ErrorPoints  <- function(x = NULL, x.unc.lo = NA, y = NULL, y.unc.lo = NA, x.unc.hi = NULL, y.unc.hi = NULL, xlog = FALSE, xlog.value = 0.01, na.rm = TRUE, ...){
+ErrorPoints  <- function(x = NULL, x.unc.lo = NA, y = NULL, y.unc.lo = NA, x.unc.hi = NULL, y.unc.hi = NULL, xlog.value = 0.01, na.rm = TRUE, ...){
 
   if ( is.null(x) | is.null(y)) stop("no x or y")
 
@@ -22,9 +21,11 @@ ErrorPoints  <- function(x = NULL, x.unc.lo = NA, y = NULL, y.unc.lo = NA, x.unc
 
   # if NAs should be removed
   if (na.rm) {
-    x[ is.na(y.unc.lo)] <- NA
-    y[ is.na(x.unc.lo)] <- NA
+    x[ is.na(y.unc.lo) | is.na(y.unc.hi)] <- NA
+    y[ is.na(x.unc.lo) | is.na(x.unc.hi)] <- NA
   }
+
+  xlog <- par("xlog")
 
   if ( !xlog) {
     segments(x - x.unc.lo, y , x + x.unc.hi, y, ...)
