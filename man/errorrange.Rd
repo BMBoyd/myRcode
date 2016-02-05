@@ -4,12 +4,16 @@
 \alias{errorrange}
 \title{Get range for vector with errors}
 \usage{
-errorrange(x, x.unc = 0.75, na.rm = T)
+errorrange(x, x.unc, xlog = F, xlog.value = 0.01, na.rm = T)
 }
 \arguments{
 \item{x}{numeric vector}
 
 \item{x.unc}{numeric vector of uncertainties same length as x}
+
+\item{xlog}{logical; if TRUE changes nonpositive values to xlog.value}
+
+\item{xlog.value}{default 0.01}
 
 \item{na.rm}{remove na? default TRUE}
 }

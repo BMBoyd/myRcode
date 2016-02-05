@@ -5,8 +5,8 @@
 \title{Plot Horizontal and Vertical Line Segments on Existing Plot}
 \usage{
 ErrorPoints(x = NULL, x.unc.lo = NA, y = NULL, y.unc.lo = NA,
-  x.unc.hi = NULL, y.unc.hi = NULL, xlog = FALSE, xlog.value = 0.01,
-  na.rm = TRUE, ...)
+  x.unc.hi = NULL, y.unc.hi = NULL, xlog.value = 0.01, na.rm = TRUE,
+  pch, pch.cex = 0.75, ...)
 }
 \arguments{
 \item{x}{a vector of x coordinates used as a centroid from which to draw segments.}
@@ -21,11 +21,13 @@ ErrorPoints(x = NULL, x.unc.lo = NA, y = NULL, y.unc.lo = NA,
 
 \item{y.unc.hi}{a vector of uncertainites added and subracted from y to create segments.}
 
-\item{xlog}{logical; if TRUE changes nonpositive values to xlog.value}
-
 \item{xlog.value}{default 0.01}
 
 \item{na.rm}{logical; if TRUE, NA values in x and x.unc (y and y.unc) values result in no vertical (horizontal) line being drawn.}
+
+\item{pch}{if supplied, point plotted with pch character before error lines drawn}
+
+\item{pch.cex}{cex to use for drawing points}
 
 \item{...}{further arguments passed to segments}
 }

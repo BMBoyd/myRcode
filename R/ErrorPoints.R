@@ -9,11 +9,15 @@
 #' @param xlog.value default 0.01
 # make this a log = x y or xy in future
 #' @param na.rm logical; if TRUE, NA values in x and x.unc (y and y.unc) values result in no vertical (horizontal) line being drawn.
+#' @param pch if supplied, point plotted with pch character before error lines drawn
+#' @param pch.cex cex to use for drawing points
 #' @param ... further arguments passed to segments
 #' @export ErrorPoints
-ErrorPoints  <- function(x = NULL, x.unc.lo = NA, y = NULL, y.unc.lo = NA, x.unc.hi = NULL, y.unc.hi = NULL, xlog.value = 0.01, na.rm = TRUE, ...){
+ErrorPoints  <- function(x = NULL, x.unc.lo = NA, y = NULL, y.unc.lo = NA, x.unc.hi = NULL, y.unc.hi = NULL, xlog.value = 0.01, na.rm = TRUE, pch, pch.cex = 0.75,...){
 
   if ( is.null(x) | is.null(y)) stop("no x or y")
+
+  if ( !missing(pch)) points( x, y, pch = pch, cex = pch.cex)
 
   # if no high range inputed, use low range.
   if ( is.null(x.unc.hi)) x.unc.hi <- x.unc.lo
@@ -32,7 +36,7 @@ ErrorPoints  <- function(x = NULL, x.unc.lo = NA, y = NULL, y.unc.lo = NA, x.unc
   } else {
     x.lo <- x - x.unc.lo
     x.lo[x.lo <= 0] <- xlog.value
-    segments( x.lo, y, x + y.unc.hi, y, ...)
+    segments( x.lo, y, x + x.unc.hi, y, ...)
   }
   segments(x, y - y.unc.lo, x, y + y.unc.hi, ...)
 }
