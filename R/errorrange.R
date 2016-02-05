@@ -1,8 +1,8 @@
 #' Get range for vector with errors
 #'
-#' @param x
-#' @param x.unc
-#' @param na.rm
+#' @param x numeric vector
+#' @param x.unc numeric vector of uncertainties same length as x
+#' @param na.rm remove na? default TRUE
 #' @export
 
 errorrange <- function( x, x.unc = 0.75, na.rm = T){
