@@ -29,24 +29,8 @@ DataMine <- function( type = c("half jar", "full jar", "regression"), folder = N
     Library$nuclide<-as.character(Library$nuclide)
     Library
   }
-    CriticalLimit <- function( B,n,m,SIGMA){
-      SIGMA*sqrt(B*(1+ n/(2*m)))
-    }
-    #########################################
-    UpperLimit <- function(A,B,n,m,SIGMA){
-      A+SIGMA*sqrt(A+B*(1+n/(2*m)))
-    }
-    #########################################
-    CountSig <- function(A,B,n,m,SIGMA){
-      ifelse(A >= CriticalLimit(B,n,m,SIGMA),"Significant",UpperLimit(A,B,n,m,SIGMA))
-    }
-    #########################################
-    DetectionLimit <- function( B, n, m, SIGMA){
-      # SIGMA <- 1.645
-      2.71+(2*SIGMA)*sqrt(B*(1+n/(2*m)))
-      # gilmore way
-      # Currie way is just 2*Lc
-    }
+
+
     ### Check arguments and look for calibration efficiencies ----
     if(is.null(type)) (stop("No efficiency type selected"))
     if(!(type %in% c("half jar", "full jar", "regression"))) (stop("Efficiency must be \"half jar\", \"full jar\", or \"regression\""))
@@ -114,7 +98,7 @@ DataMine <- function( type = c("half jar", "full jar", "regression"), folder = N
     # if no match, return NA
     EffEnergy<-do.call(rbind.data.frame, EffEnergy)
     # create df of energies and nuclide names
-    significant<- CountSig(DATA$NetPeakArea,DATA$ContinuumCounts,DATA$ROILength,4,1.645)
+    significant<- CountSig(DATA$NetPeakArea, DATA$NetAreaUncert, DATA$ContinuumCounts,DATA$ROILength,4,1.645)
     # run CountSig on all peaks
     DATA<-cbind(DATA,EffEnergy,significant)
     DATA$eff.type<-as.character(DATA$eff.type)
